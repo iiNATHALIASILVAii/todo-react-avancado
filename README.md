@@ -49,3 +49,11 @@ O projeto utiliza:
 
 - `useMemo` para evitar recálculos desnecessários da lista filtrada e das estatísticas.
 - `React.memo` para evitar renderizações desnecessárias em componentes como lista, filtros e item de tarefa.
+
+## Como rodar o projeto localmente
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/iiNATHALIASILVAii/todo-react-avancado.git
+```
