@@ -1,0 +1,252 @@
+/* Reset simples para evitar diferenças entre navegadores */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo base da página */
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, #d4f1f4, transparent 30%),
+    linear-gradient(135deg, #f8fafc, #e0f2fe);
+  color: #1f2937;
+}
+
+/* Container principal da aplicação */
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+/* Card central da Todo List */
+.todo-card {
+  width: 100%;
+  max-width: 720px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+}
+
+/* Cabeçalho */
+.app-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.app-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: #ccfbf1;
+  color: #0f766e;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.app-header h1 {
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+  color: #0f172a;
+}
+
+.app-header p {
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Formulário de cadastro */
+.todo-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.todo-form input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.todo-form input:focus {
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+}
+
+.todo-form button {
+  border: none;
+  border-radius: 14px;
+  padding: 0 20px;
+  background-color: #0f766e;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.todo-form button:hover {
+  background-color: #115e59;
+  transform: translateY(-1px);
+}
+
+/* Área dos filtros e estatísticas */
+.filters-area {
+  margin-bottom: 24px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.stats span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  border: 2px solid #cbd5e1;
+  background-color: #ffffff;
+  color: #334155;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filters button:hover {
+  border-color: #14b8a6;
+  color: #0f766e;
+}
+
+.filters button.active {
+  background-color: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+}
+
+/* Lista de tarefas */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cada item da lista */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 18px;
+  background-color: #ffffff;
+  transition: 0.2s;
+}
+
+.todo-item:hover {
+  border-color: #99f6e4;
+  box-shadow: 0 10px 30px rgba(15, 118, 110, 0.08);
+}
+
+.todo-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.todo-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: #0f766e;
+}
+
+/* Quando a tarefa estiver concluída */
+.todo-item.completed span {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+/* Botão de remover */
+.remove-button {
+  border: none;
+  border-radius: 12px;
+  padding: 9px 12px;
+  background-color: #fee2e2;
+  color: #b91c1c;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.remove-button:hover {
+  background-color: #fecaca;
+}
+
+/* Mensagem quando não existem tarefas no filtro atual */
+.empty-message {
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #f8fafc;
+  color: #64748b;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+  .todo-card {
+    padding: 24px 18px;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .todo-form {
+    flex-direction: column;
+  }
+
+  .todo-form button {
+    padding: 14px;
+  }
+
+  .todo-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .remove-button {
+    width: 100%;
+  }
+}
