@@ -57,3 +57,23 @@ Clone o repositório:
 ```bash
 git clone https://github.com/iiNATHALIASILVAii/todo-react-avancado.git
 ```
+
+Acesse a pasta do projeto:
+
+```bash
+cd todo-react-avancado
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o servidor local:
+
+```bash
+npm run dev
+```
+
+Após executar o comando, abra no navegador o endereço exibido no terminal.
