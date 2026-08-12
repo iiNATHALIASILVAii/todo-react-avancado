@@ -1,10 +1,16 @@
 import React from "react";
-import { useTodos } from "../context/TodoContext";
+import { useRecoilValue } from "recoil";
+
+import { filteredTodoListState } from "../selectors/todoSelectors";
 import TodoItem from "./TodoItem";
 
-// React.memo ajuda a evitar renderizações desnecessárias da lista.
+// React.memo ajuda a evitar renderizações desnecessárias da lista
 const TodoList = React.memo(function TodoList() {
-  const { filteredTodos } = useTodos();
+  // O selector já entrega apenas as tarefas
+  // correspondentes ao filtro selecionado
+  const filteredTodos = useRecoilValue(
+    filteredTodoListState
+  );
 
   if (filteredTodos.length === 0) {
     return (

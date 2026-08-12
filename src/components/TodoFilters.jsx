@@ -1,10 +1,19 @@
 import React from "react";
-import { useTodos } from "../context/TodoContext";
+import {
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
+
+import { todoFilterState } from "../atoms/todoAtoms";
+import { todoStatsState } from "../selectors/todoSelectors";
 
 // React.memo evita renderização desnecessária do componente
 // quando as props/estados usados por ele não mudam.
 const TodoFilters = React.memo(function TodoFilters() {
-  const { filter, setFilter, todoStats } = useTodos();
+  const [filter, setFilter] = useRecoilState(todoFilterState);
+
+  // Obtém as estatísticas calculadas pelo selector.
+  const todoStats = useRecoilValue(todoStatsState);
 
   return (
     <section className="filters-area">

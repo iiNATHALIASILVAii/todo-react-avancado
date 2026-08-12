@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+import { RecoilRoot } from "recoil";
+
 import App from "./App.jsx";
 import "./index.css";
 
-// Importamos o Provider para envolver toda a aplicação.
-// Assim, qualquer componente dentro do App poderá acessar o contexto de tarefas.
-import { TodoProvider } from "./context/TodoContext.jsx";
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <TodoProvider>
+    <RecoilRoot>
       <App />
-    </TodoProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );

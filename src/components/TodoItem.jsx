@@ -1,17 +1,47 @@
 import React from "react";
-import { useTodos } from "../context/TodoContext";
+import { useSetRecoilState } from "recoil";
+
+import { todoListState } from "../atoms/todoAtoms";
 
 // React.memo evita renderizar novamente um item se ele não mudou.
 const TodoItem = React.memo(function TodoItem({ todo }) {
-  const { toggleTodo, removeTodo } = useTodos();
+  const setTodos = useSetRecoilState(todoListState);
+
+  // Marca ou desmarca uma tarefa como concluída.
+  function toggleTodo() {
+    setTodos((currentTodos) =>
+      currentTodos.map((currentTodo) =>
+        currentTodo.id === todo.id
+          ? {
+              ...currentTodo,
+              completed: !currentTodo.completed,
+            }
+          : currentTodo
+      )
+    );
+  }
+
+  // Remove a tarefa selecionada.
+  function removeTodo() {
+    setTodos((currentTodos) =>
+      currentTodos.filter(
+        (currentTodo) =>
+          currentTodo.id !== todo.id
+      )
+    );
+  }
 
   return (
-    <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
+    <li
+      className={`todo-item ${
+        todo.completed ? "completed" : ""
+      }`}
+    >
       <label className="todo-check">
         <input
           type="checkbox"
           checked={todo.completed}
-          onChange={() => toggleTodo(todo.id)}
+          onChange={toggleTodo}
         />
 
         <span>{todo.text}</span>
@@ -19,7 +49,7 @@ const TodoItem = React.memo(function TodoItem({ todo }) {
 
       <button
         className="remove-button"
-        onClick={() => removeTodo(todo.id)}
+        onClick={removeTodo}
         aria-label={`Remover tarefa ${todo.text}`}
       >
         Remover
@@ -27,5 +57,6 @@ const TodoItem = React.memo(function TodoItem({ todo }) {
     </li>
   );
 });
+
 
 export default TodoItem;
